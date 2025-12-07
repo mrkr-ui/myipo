@@ -1,0 +1,59 @@
+# .prettierignore — common patterns to skip formatting
+
+# dependencies
+node_modules/
+bower_components/
+jspm_packages/
+
+# build / output
+dist/
+build/
+out/
+release/
+public/
+.next/
+.nuxt/
+storybook-static/
+coverage/
+reports/
+.cache/
+
+# temporary / system files
+tmp/
+temp/
+logs/
+*.log
+.DS_Store
+Thumbs.db
+
+# generated / minified files
+*.min.js
+*.min.css
+*.bundle.js
+*.bundle.* 
+*.map
+*.min.* 
+*.min.html
+
+# package manager lockfiles (generated)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# binaries and archives
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.pdf
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.jar
