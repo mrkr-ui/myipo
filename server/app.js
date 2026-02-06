@@ -1,20 +1,36 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import userRoutes from './routes/userRoutes.js';
+import { loadSupabaseJWKS } from './middleware/supabaseJWKS.js';
 
-dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+})); //cors middleware for handling cross-origin requests
 
-app.use(express.json());
+app.use(express.json()); // built-in middleware for parsing JSON request bodies
 
-// Sample route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+
+app.use(cookieParser(process.env.COOKIE_SECRET)); // cookie parser middleware for secure cookie handling
+
+await loadSupabaseJWKS(); // Load JWKS at server startup
+
+// root route
+app.use('/api/user', userRoutes);
+
+//error handling middleware
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+    errors: err.errors || [],
+  });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+export default app;
