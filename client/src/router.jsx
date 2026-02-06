@@ -9,6 +9,12 @@ const router = createBrowserRouter([
     {path: "/", element: <App />},
     {path: "/signup", element: <Signup />},
     {path: "/login", element: <Login />},
-    {path: "/dashboard", element: <Dashboard />},
+    {path: "/dashboard", element: <Dashboard/>
+        // (
+        // <PrivateRoute>
+        // <Dashboard />
+        // </PrivateRoute>
+        // )
+    } 
 ])
 export default router;

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import supabase from '../superbaseClient.js';
 import { UserAuth } from '../authcontext.jsx';
+import {api} from '../utils/api.js'; 
 
 function CreateAlert() {
-    const { session } = UserAuth();
+    const { userData, insertAlertToList } = UserAuth();
+	
 	const [form, setForm] = useState({
 		ipoName: '',
 		alertDate: '',
@@ -19,8 +20,9 @@ function CreateAlert() {
 		setForm((p) => ({ ...p, [name]: value }))
 	}
 
-	const createAlert = async (e) => {
+	const handleAlert = async (e) => {
 		e.preventDefault()
+		if ( !userData ) return;
 		const payload = {
 			ipoName: form.ipoName.trim(),
 			alertAt:
@@ -33,39 +35,54 @@ function CreateAlert() {
 		}
 		// replace with API call as needed
 		console.log('Create alert payload:', payload)
+
+		await insertAlertToList(payload);
         
-        if ( !session?.user ) return;
+        //if ( !userData ) return;
         //insert data
-        const {data, error} = await supabase
-            .from('ipo_alerts')
-            .insert({
-                user_id: session.user.id,
-                ipo_name: payload.ipoName,
-                alert_at: payload.alertAt,
-                filter: payload.filters
-            })
-        if ( error ) {
-            console.error("error while creating alert: ", error)
-            return { success:false, error}
-        }else{
-            console.log("alert created successfully: ", data)
-        }
-		// reset
-		setForm({
-			ipoName: '',
-			alertDate: '',
-			alertTime: '',
-			subscriptionOp: '>',
-			subscriptionValue: '',
-			gmpOp: '>',
-			gmpValue: ''
-		})
+        // const {data, error} = await supabase
+        //     .from('ipo_alerts')
+        //     .insert({
+        //         user_id: session.user.id,
+        //         ipo_name: payload.ipoName,
+        //         alert_at: payload.alertAt,
+        //         filter: payload.filters
+        //     })
+        // if ( error ) {
+        //     console.error("error while creating alert: ", error)
+        //     return { success:false, error}
+        // }else{
+        //     console.log("alert created successfully: ", data)
+        // }
+							//RECENTLY REMOVED DATA
+	// 	try {
+	// 		const rsponse = await api.post("/api/user/update/alerts", {
+	// 			alertData: payload
+	// 		})
+	// 		if(!rsponse?.data?.success){
+	// 			console.error("Error creating alert:", rsponse.error);
+	// 			return { success:false, error: rsponse.error };
+	// 		}
+	// 		setAlertList((prev) => [payload, ...prev]); 
+	// 	} catch (error) {
+	// 	// reset
+	// 		console.error("Error creating alert:", error.message);
+	// 	setForm({
+	// 		ipoName: '',
+	// 		alertDate: '',
+	// 		alertTime: '',
+	// 		subscriptionOp: '>',
+	// 		subscriptionValue: '',
+	// 		gmpOp: '>',
+	// 		gmpValue: ''
+	// 	})
+	// }
 	}
 
 	return (
 		<div>
 			<div>
-				<form action="" method="post" className="flex space-x-4" onSubmit={createAlert}>
+				<form action="" method="post" className="flex space-x-4" onSubmit={handleAlert}>
 					{/* Basic details section */}
 					<div>
 						<h3 className="text-lg text-red-600">Basic details</h3>

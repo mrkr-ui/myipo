@@ -6,19 +6,19 @@ import { UserAuth } from '../authcontext.jsx'
 function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const { session, signIn } = UserAuth();
+	const { signIn } = UserAuth();
 	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const result = await signIn( email, password );
-			if(!result?.data?.user) {
+			if(!result?.success) {
 				console.error("user does not exist")
 				return { success: false, error: 'No user' };
 			}
 			navigate('/dashboard');
-			return {sucess: true, data: result };
+			return {sucess: true };
 		} catch (err) {
 			console.error("error while loggong in: ", {err} )
 			return {sucess:false, err}

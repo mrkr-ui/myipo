@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { UserAuth } from '../authcontext.jsx'
 import { useNavigate } from 'react-router-dom';
-import supabase from "../superbaseClient.js";
-import { updateName } from '../superbaseClient.js';
+import { updateData } from '../superbaseClient.js';
 
 //signup component 234
 function Signup() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const { session, signUpNewUser } = UserAuth();
+	const { signUpNewUser } = UserAuth();
 	const [name, setName] = useState('');
 	const navigate = useNavigate();
 	
@@ -19,24 +18,25 @@ function Signup() {
 	const handleSignup = async (e) =>{ 
 		e.preventDefault();
 		try {
-			const result = await signUpNewUser(email, password);
+			const result = await signUpNewUser(email, password, name);
+			
 			// try multiple possible shapes for returned user id
-			const userId =
-				result?.user?.id ||
-				result?.data?.user?.id ||
-				result?.id ||
-				result?.userId ||
-				result?.data?.id;
+			// const userId =
+			// 	result?.user?.id ||
+			// 	result?.data?.user?.id ||
+			// 	result?.id ||
+			// 	result?.userId ||
+			// 	result?.data?.id;
 
-			if (!userId) {
-				console.error("Signup did not return a user id:", result);
+			if (!result?.success) {
+				console.error("Signup did not return a data object", result);
 				return;
 			}
 
 			const persistNavName = async () => {
 				try {
-					const res = await updateName(name, userId);
-					console.log("session data is", session)
+					const res = await updateData(name);
+					
 					if (res){
 						console.log("Name updated in profile:", res);
 					}

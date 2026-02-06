@@ -1,132 +1,143 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import supabase from "./superbaseClient.js";
-
+import {api} from "./utils/api.js";
+//import { use } from "react";
 const AuthContext = createContext();
+let isUserAutologin = true;
 
 export const AuthProvider = ({ children }) => {
-    const [session, setSession] = useState(undefined);
+    const [userData, setUserData] = useState();
+    const [name, setName] = useState("");
+    const [alertList, setAlertList] = useState([]);
 
     //signUp function
-    const signUpNewUser = async (email, password) =>{
-        const {data, error} = await supabase.auth.signUp({
-            email,
-            password,
-            //options: { emailRedirectTo: window.location.origin } 
-            // optional, disable confirmation
-            // TODO: remove emailRedirectTo or set it to your app URL during production 
-        });
-        if ( error ) {
+    const signUpNewUser = async (email, password, name) =>{
+        try {
+            const response = await api.post("/api/user/register", {
+                email,
+                password,
+                name
+            })
+            console.log("signUp response:", response);
+            if(!response?.data?.success){
+                return { success:false, error: response.error };
+            }
+            console.log("name from signUp response:", response?.data?.user?.name);
+            setName(response?.data?.user?.name || "");
+            isUserAutologin = false;
+            return { success:true, data: response?.data?.user };
+        } catch (error) {
             console.error("Error signing up:", error.message);
-            return {success:false, error};
+            return { success:false, error: error.message };
         }
-        setSession(data.session);
-        console.log("signUp successful");
-        return {success: true, data}
     }
 
-    useEffect(() =>{
-        // Get initial session
-        supabase.auth.getSession().then(({data: {session}}) => {
-            setSession(session);
-        });
+   
+    // Get initial user
+    const fetchUser = async () =>{
+        try {
+            const response = await api.get("/api/user/me", { withCredentials: true })
 
-        // Listen for auth changes
-        const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-            setSession(session);
-        });
-
-        //cleanup
-        return () => {
-            authListener.subscription.unsubscribe();
+            if(!response?.data?.success || !response?.data?.user){
+                setUserData(null);
+                return { success:false, error: "No user found" };
+            }
+            setUserData(response?.data?.user);
+            //setName(response?.data?.user?.name || "");
+            return { success:true, data: response?.data?.user};
+        } catch (error) {
+            //setUserData(null);
+            
+            console.error("Error fetching user:", error.message);
+            return { success:false, error: error.message };
         }
-    },[])
+            
+    }
+    
+    //alertlist
+    const insertAlertToList = async (payload) => {
+        try {
+            const rsponse = await api.post("/api/user/update/alerts", {
+                alertData: payload
+            })
+            if(!rsponse?.data?.success){
+                console.error("Error creating alert:", rsponse.error);
+                return { success:false, error: rsponse.error };
+            }
+            //setAlertList((prev) => [payload, ...prev]); 
+        } catch (error) { console.error("Error creating alert:", error.message);}
+    }
+
+    //fetch alerts
+    useEffect( () => {
+        async function fetchAlerts() {
+            try {
+                
+                const response = await api.get('/api/user/alerts');
+                console.log("alerts response:", response.data);
+                const alerts = response?.data?.alerts || [];
+                const normalized = alerts.map(a => ({
+                id: a.id,
+                ipoName: a.ipo_name,
+                alertAt: a.alert_at,
+                filters: a.filter,
+                status: a.status
+            }));
+
+            setAlertList(normalized);
+            } catch (error) {
+                console.error("Fetch alerts failed:", error);
+            }
+        }
+
+        fetchAlerts();
+    }, [name]);
 
     //signIn function
     const signIn = async ( email, password ) => {
         try{
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const response = await api.post("/api/user/login", {
                 email,
                 password,
             });
-            if ( error ) {
-                console.error("Error signing in:", error.message);
-                return {success:false, error};
+            if ( !response?.data?.success ) {
+                console.error("Error signing in:");
+                return {success:false};
             }
-            console.log("signIn successful");
-            setSession(data.session);
-            return { success:true, data }
+            //isUserAutologin = false;
+            //console.log("signIn successful");
+            //setUserData(response?.data?.user);
+            //setName(response?.data?.user?.name || "");
+            return { success:true };// , data: response?.data?.user
         } catch (err) {
             console.error("Error signing in:", err.message);
             return {success:false, error: err.message};
         }
     }
 
-    //chnage password
-    const changePassword = async ( newPassword ) =>{
-        try {
-            const {data, error} = await supabase.auth.updateUser({
-                password: newPassword
-            });
-            if (error){
-                console.error("error while updating password: ", error)
-                return {success: false, error}
-            }
-            return {success: true, data}
-        } catch (err) {
-            console.error("something went wrong: ", err.message )
-            return {success:false}
-        }
-    }
-
-    
-    //cahnge name
-    // const changeName = async () => {
-    //     const { data: userData, error: userError } = await supabase.auth.getUser()
-
-    //     if(userError || !userData?.user){
-    //         console.error("error while getting user")
-    //         return
-    //     }
-        
-    //     const userId = userData.user.id
-    //     await supabase
-    //     .from("user_profile")
-    //     .update({ name })
-    //     .eq("id", user.id);
-    //     const { data, error } = await supabase
-    //     .from('user_profile')
-    //     .update({name: "new name"})
-    //     .eq("id", userId)
-        
-    //     if ( error ) {
-    //         console.error("error while updating name: ", error)
-    //         return { success:false, error}
-    //     }
-    //     return { success : true, data }
-    // }
-
     //signOut function
     const signOut = async () => {
         try {
-            const { error } = await supabase.auth.signOut();
-            if ( error ) {
-                console.error("Error signing out:", error.message);
-                return {success:false, error};
+            const response = await api.post("/api/user/logout", { withCredentials: true });
+
+            if(!response.data.success){
+                console.error("Error getting response:");
+                return {success:false};
             }
-            console.log("signOut successful");
 
             // Immediately update UI
-            setSession(null);
+            setUserData(null);
+            setAlertList([]);
+            setName("");
             return {success:true};
             
         } catch (err) {
             // unexpected failures (network, library bug, etc.)
-            console.error("Error signing out:", err.message);
+            console.error("unexpected error signing out:", err.message);
             return {success:false, error: err.message};
         }
     }
 
-    return <AuthContext.Provider value={{ session, signUpNewUser, signOut, signIn, changePassword }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ userData, name, signUpNewUser, signOut, signIn, fetchUser, isUserAutologin, insertAlertToList, alertList }}>{children}</AuthContext.Provider>
     
 }
 
