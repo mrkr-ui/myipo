@@ -1,0 +1,504 @@
+{
+  "ipoData": [
+    {
+      "name": "Company 01 Ltd",
+      "subscription": 10,
+      "gmp": 8,
+      "marketCap": 500,
+      "listingDate": "2024-07-15",
+      "lastDateToApply": "2024-07-01",
+      "noOfShares": 100,
+      "priceBand": "₹100-₹120"
+    },
+    {
+      "name": "Company 02 Ltd",
+      "subscription": 15,
+      "gmp": -5,
+      "marketCap": 1200,
+      "listingDate": "2024-07-16",
+      "lastDateToApply": "2024-07-02",
+      "noOfShares": 1000,
+      "priceBand": "₹50-₹60"
+    },
+    {
+      "name": "Company 03 Ltd",
+      "subscription": 20,
+      "gmp": 0,
+      "marketCap": 50,
+      "listingDate": "2024-07-17",
+      "lastDateToApply": "2024-07-03",
+      "noOfShares": 5000,
+      "priceBand": "₹250-₹270"
+    },
+    {
+      "name": "Company 04 Ltd",
+      "subscription": 35,
+      "gmp": 20,
+      "marketCap": 8000,
+      "listingDate": "2024-07-18",
+      "lastDateToApply": "2024-07-04",
+      "noOfShares": 10000,
+      "priceBand": "₹10-₹12"
+    },
+    {
+      "name": "Company 05 Ltd",
+      "subscription": 50,
+      "gmp": 50,
+      "marketCap": 150,
+      "listingDate": "2024-07-19",
+      "lastDateToApply": "2024-07-05",
+      "noOfShares": 50000,
+      "priceBand": "₹400-₹420"
+    },
+    {
+      "name": "Company 06 Ltd",
+      "subscription": 75,
+      "gmp": 100,
+      "marketCap": 600,
+      "listingDate": "2024-07-20",
+      "lastDateToApply": "2024-07-06",
+      "noOfShares": 100000,
+      "priceBand": "₹30-₹35"
+    },
+    {
+      "name": "Company 07 Ltd",
+      "subscription": 100,
+      "gmp": 150,
+      "marketCap": 3000,
+      "listingDate": "2024-07-21",
+      "lastDateToApply": "2024-07-07",
+      "noOfShares": 250000,
+      "priceBand": "₹800-₹820"
+    },
+    {
+      "name": "Company 08 Ltd",
+      "subscription": 5,
+      "gmp": -10,
+      "marketCap": 45,
+      "listingDate": "2024-07-22",
+      "lastDateToApply": "2024-07-08",
+      "noOfShares": 500000,
+      "priceBand": "₹45-₹50"
+    },
+    {
+      "name": "Company 09 Ltd",
+      "subscription": 200,
+      "gmp": 250,
+      "marketCap": 20000,
+      "listingDate": "2024-07-23",
+      "lastDateToApply": "2024-07-09",
+      "noOfShares": 1000000,
+      "priceBand": "₹1200-₹1250"
+    },
+    {
+      "name": "Company 10 Ltd",
+      "subscription": 120,
+      "gmp": 30,
+      "marketCap": 750,
+      "listingDate": "2024-07-24",
+      "lastDateToApply": "2024-07-10",
+      "noOfShares": 2000000,
+      "priceBand": "₹60-₹65"
+    },
+    {
+      "name": "Company 11 Ltd",
+      "subscription": 10,
+      "gmp": 8,
+      "marketCap": 500,
+      "listingDate": "2024-07-25",
+      "lastDateToApply": "2024-07-11",
+      "noOfShares": 100,
+      "priceBand": "₹100-₹120"
+    },
+    {
+      "name": "Company 12 Ltd",
+      "subscription": 15,
+      "gmp": -5,
+      "marketCap": 1200,
+      "listingDate": "2024-07-26",
+      "lastDateToApply": "2024-07-12",
+      "noOfShares": 1000,
+      "priceBand": "₹50-₹60"
+    },
+    {
+      "name": "Company 13 Ltd",
+      "subscription": 20,
+      "gmp": 0,
+      "marketCap": 50,
+      "listingDate": "2024-07-27",
+      "lastDateToApply": "2024-07-13",
+      "noOfShares": 5000,
+      "priceBand": "₹250-₹270"
+    },
+    {
+      "name": "Company 14 Ltd",
+      "subscription": 35,
+      "gmp": 20,
+      "marketCap": 8000,
+      "listingDate": "2024-07-28",
+      "lastDateToApply": "2024-07-14",
+      "noOfShares": 10000,
+      "priceBand": "₹10-₹12"
+    },
+    {
+      "name": "Company 15 Ltd",
+      "subscription": 50,
+      "gmp": 50,
+      "marketCap": 150,
+      "listingDate": "2024-07-29",
+      "lastDateToApply": "2024-07-15",
+      "noOfShares": 50000,
+      "priceBand": "₹400-₹420"
+    },
+    {
+      "name": "Company 16 Ltd",
+      "subscription": 75,
+      "gmp": 100,
+      "marketCap": 600,
+      "listingDate": "2024-07-30",
+      "lastDateToApply": "2024-07-16",
+      "noOfShares": 100000,
+      "priceBand": "₹30-₹35"
+    },
+    {
+      "name": "Company 17 Ltd",
+      "subscription": 100,
+      "gmp": 150,
+      "marketCap": 3000,
+      "listingDate": "2024-07-31",
+      "lastDateToApply": "2024-07-17",
+      "noOfShares": 250000,
+      "priceBand": "₹800-₹820"
+    },
+    {
+      "name": "Company 18 Ltd",
+      "subscription": 5,
+      "gmp": -10,
+      "marketCap": 45,
+      "listingDate": "2024-08-01",
+      "lastDateToApply": "2024-07-18",
+      "noOfShares": 500000,
+      "priceBand": "₹45-₹50"
+    },
+    {
+      "name": "Company 19 Ltd",
+      "subscription": 200,
+      "gmp": 250,
+      "marketCap": 20000,
+      "listingDate": "2024-08-02",
+      "lastDateToApply": "2024-07-19",
+      "noOfShares": 1000000,
+      "priceBand": "₹1200-₹1250"
+    },
+    {
+      "name": "Company 20 Ltd",
+      "subscription": 120,
+      "gmp": 30,
+      "marketCap": 750,
+      "listingDate": "2024-08-03",
+      "lastDateToApply": "2024-07-20",
+      "noOfShares": 2000000,
+      "priceBand": "₹60-₹65"
+    },
+    {
+      "name": "Company 21 Ltd",
+      "subscription": 10,
+      "gmp": 8,
+      "marketCap": 500,
+      "listingDate": "2024-08-04",
+      "lastDateToApply": "2024-07-21",
+      "noOfShares": 100,
+      "priceBand": "₹100-₹120"
+    },
+    {
+      "name": "Company 22 Ltd",
+      "subscription": 15,
+      "gmp": -5,
+      "marketCap": 1200,
+      "listingDate": "2024-08-05",
+      "lastDateToApply": "2024-07-22",
+      "noOfShares": 1000,
+      "priceBand": "₹50-₹60"
+    },
+    {
+      "name": "Company 23 Ltd",
+      "subscription": 20,
+      "gmp": 0,
+      "marketCap": 50,
+      "listingDate": "2024-08-06",
+      "lastDateToApply": "2024-07-23",
+      "noOfShares": 5000,
+      "priceBand": "₹250-₹270"
+    },
+    {
+      "name": "Company 24 Ltd",
+      "subscription": 35,
+      "gmp": 20,
+      "marketCap": 8000,
+      "listingDate": "2024-08-07",
+      "lastDateToApply": "2024-07-24",
+      "noOfShares": 10000,
+      "priceBand": "₹10-₹12"
+    },
+    {
+      "name": "Company 25 Ltd",
+      "subscription": 50,
+      "gmp": 50,
+      "marketCap": 150,
+      "listingDate": "2024-08-08",
+      "lastDateToApply": "2024-07-25",
+      "noOfShares": 50000,
+      "priceBand": "₹400-₹420"
+    },
+    {
+      "name": "Company 26 Ltd",
+      "subscription": 75,
+      "gmp": 100,
+      "marketCap": 600,
+      "listingDate": "2024-08-09",
+      "lastDateToApply": "2024-07-26",
+      "noOfShares": 100000,
+      "priceBand": "₹30-₹35"
+    },
+    {
+      "name": "Company 27 Ltd",
+      "subscription": 100,
+      "gmp": 150,
+      "marketCap": 3000,
+      "listingDate": "2024-08-10",
+      "lastDateToApply": "2024-07-27",
+      "noOfShares": 250000,
+      "priceBand": "₹800-₹820"
+    },
+    {
+      "name": "Company 28 Ltd",
+      "subscription": 5,
+      "gmp": -10,
+      "marketCap": 45,
+      "listingDate": "2024-08-11",
+      "lastDateToApply": "2024-07-28",
+      "noOfShares": 500000,
+      "priceBand": "₹45-₹50"
+    },
+    {
+      "name": "Company 29 Ltd",
+      "subscription": 200,
+      "gmp": 250,
+      "marketCap": 20000,
+      "listingDate": "2024-08-12",
+      "lastDateToApply": "2024-07-29",
+      "noOfShares": 1000000,
+      "priceBand": "₹1200-₹1250"
+    },
+    {
+      "name": "Company 30 Ltd",
+      "subscription": 120,
+      "gmp": 30,
+      "marketCap": 750,
+      "listingDate": "2024-08-13",
+      "lastDateToApply": "2024-07-30",
+      "noOfShares": 2000000,
+      "priceBand": "₹60-₹65"
+    },
+    {
+      "name": "Company 31 Ltd",
+      "subscription": 10,
+      "gmp": 8,
+      "marketCap": 500,
+      "listingDate": "2024-08-14",
+      "lastDateToApply": "2024-07-31",
+      "noOfShares": 100,
+      "priceBand": "₹100-₹120"
+    },
+    {
+      "name": "Company 32 Ltd",
+      "subscription": 15,
+      "gmp": -5,
+      "marketCap": 1200,
+      "listingDate": "2024-08-15",
+      "lastDateToApply": "2024-08-01",
+      "noOfShares": 1000,
+      "priceBand": "₹50-₹60"
+    },
+    {
+      "name": "Company 33 Ltd",
+      "subscription": 20,
+      "gmp": 0,
+      "marketCap": 50,
+      "listingDate": "2024-08-16",
+      "lastDateToApply": "2024-08-02",
+      "noOfShares": 5000,
+      "priceBand": "₹250-₹270"
+    },
+    {
+      "name": "Company 34 Ltd",
+      "subscription": 35,
+      "gmp": 20,
+      "marketCap": 8000,
+      "listingDate": "2024-08-17",
+      "lastDateToApply": "2024-08-03",
+      "noOfShares": 10000,
+      "priceBand": "₹10-₹12"
+    },
+    {
+      "name": "Company 35 Ltd",
+      "subscription": 50,
+      "gmp": 50,
+      "marketCap": 150,
+      "listingDate": "2024-08-18",
+      "lastDateToApply": "2024-08-04",
+      "noOfShares": 50000,
+      "priceBand": "₹400-₹420"
+    },
+    {
+      "name": "Company 36 Ltd",
+      "subscription": 75,
+      "gmp": 100,
+      "marketCap": 600,
+      "listingDate": "2024-08-19",
+      "lastDateToApply": "2024-08-05",
+      "noOfShares": 100000,
+      "priceBand": "₹30-₹35"
+    },
+    {
+      "name": "Company 37 Ltd",
+      "subscription": 100,
+      "gmp": 150,
+      "marketCap": 3000,
+      "listingDate": "2024-08-20",
+      "lastDateToApply": "2024-08-06",
+      "noOfShares": 250000,
+      "priceBand": "₹800-₹820"
+    },
+    {
+      "name": "Company 38 Ltd",
+      "subscription": 5,
+      "gmp": -10,
+      "marketCap": 45,
+      "listingDate": "2024-08-21",
+      "lastDateToApply": "2024-08-07",
+      "noOfShares": 500000,
+      "priceBand": "₹45-₹50"
+    },
+    {
+      "name": "Company 39 Ltd",
+      "subscription": 200,
+      "gmp": 250,
+      "marketCap": 20000,
+      "listingDate": "2024-08-22",
+      "lastDateToApply": "2024-08-08",
+      "noOfShares": 1000000,
+      "priceBand": "₹1200-₹1250"
+    },
+    {
+      "name": "Company 40 Ltd",
+      "subscription": 120,
+      "gmp": 30,
+      "marketCap": 750,
+      "listingDate": "2024-08-23",
+      "lastDateToApply": "2024-08-09",
+      "noOfShares": 2000000,
+      "priceBand": "₹60-₹65"
+    },
+    {
+      "name": "Company 41 Ltd",
+      "subscription": 10,
+      "gmp": 8,
+      "marketCap": 500,
+      "listingDate": "2024-08-24",
+      "lastDateToApply": "2024-08-10",
+      "noOfShares": 100,
+      "priceBand": "₹100-₹120"
+    },
+    {
+      "name": "Company 42 Ltd",
+      "subscription": 15,
+      "gmp": -5,
+      "marketCap": 1200,
+      "listingDate": "2024-08-25",
+      "lastDateToApply": "2024-08-11",
+      "noOfShares": 1000,
+      "priceBand": "₹50-₹60"
+    },
+    {
+      "name": "Company 43 Ltd",
+      "subscription": 20,
+      "gmp": 0,
+      "marketCap": 50,
+      "listingDate": "2024-08-26",
+      "lastDateToApply": "2024-08-12",
+      "noOfShares": 5000,
+      "priceBand": "₹250-₹270"
+    },
+    {
+      "name": "Company 44 Ltd",
+      "subscription": 35,
+      "gmp": 20,
+      "marketCap": 8000,
+      "listingDate": "2024-08-27",
+      "lastDateToApply": "2024-08-13",
+      "noOfShares": 10000,
+      "priceBand": "₹10-₹12"
+    },
+    {
+      "name": "Company 45 Ltd",
+      "subscription": 50,
+      "gmp": 50,
+      "marketCap": 150,
+      "listingDate": "2024-08-28",
+      "lastDateToApply": "2024-08-14",
+      "noOfShares": 50000,
+      "priceBand": "₹400-₹420"
+    },
+    {
+      "name": "Company 46 Ltd",
+      "subscription": 75,
+      "gmp": 100,
+      "marketCap": 600,
+      "listingDate": "2024-08-29",
+      "lastDateToApply": "2024-08-15",
+      "noOfShares": 100000,
+      "priceBand": "₹30-₹35"
+    },
+    {
+      "name": "Company 47 Ltd",
+      "subscription": 100,
+      "gmp": 150,
+      "marketCap": 3000,
+      "listingDate": "2024-08-30",
+      "lastDateToApply": "2024-08-16",
+      "noOfShares": 250000,
+      "priceBand": "₹800-₹820"
+    },
+    {
+      "name": "Company 48 Ltd",
+      "subscription": 5,
+      "gmp": -10,
+      "marketCap": 45,
+      "listingDate": "2024-08-31",
+      "lastDateToApply": "2024-08-17",
+      "noOfShares": 500000,
+      "priceBand": "₹45-₹50"
+    },
+    {
+      "name": "Company 49 Ltd",
+      "subscription": 200,
+      "gmp": 250,
+      "marketCap": 20000,
+      "listingDate": "2024-09-01",
+      "lastDateToApply": "2024-08-18",
+      "noOfShares": 1000000,
+      "priceBand": "₹1200-₹1250"
+    },
+    {
+      "name": "Company 50 Ltd",
+      "subscription": 120,
+      "gmp": 30,
+      "marketCap": 750,
+      "listingDate": "2024-09-02",
+      "lastDateToApply": "2024-08-19",
+      "noOfShares": 2000000,
+      "priceBand": "₹60-₹65"
+    }
+  ]
+}
