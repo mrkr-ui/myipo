@@ -198,8 +198,8 @@ export async function updateUserAlerts(req, res, next) {
                 ipo_name: alertData.ipoName,
                 alert_at: alertData.alertAt,
                 filter: alertData.filters,
-                email: email
-                //TODO: add pending status to superbase table
+                email: email,
+                status: 'pending'
             })
             .select()
             .single();

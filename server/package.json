@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon server/workers/worker.js\" \"nodemon server/workers/scheduler.js\" \"nodemon server/index.js\"",
+    "dev": "concurrently -n redis,worker,scheduler,api -c red,blue,green,yellow \"node workers/dev-redis.js\" \"wait-on tcp:127.0.0.1:6379 && node --watch workers/worker.js\" \"wait-on tcp:127.0.0.1:6379 && node --watch workers/scheduler.js\" \"node --watch index.js\"",
     "format": "prettier --write .",
     "check-format": "prettier --check ."
   },
@@ -18,7 +18,7 @@
     "bullmq": "^5.67.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jose": "^6.1.3",
     "jsonwebtoken": "^9.0.3",
@@ -30,6 +30,8 @@
     "concurrently": "^9.2.1",
     "json-server": "^1.0.0-beta.5",
     "nodemon": "^3.1.11",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "redis-memory-server": "^0.16.1",
+    "wait-on": "^9.0.10"
   }
 }

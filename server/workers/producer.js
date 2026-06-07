@@ -1,29 +1,14 @@
 import {Queue} from 'bullmq';
+import { connection } from './redis.js';
 
-export const notificationQueue = new Queue( 'notification' ,{
-    connection: {
-        host: 'localhost',
-        port: 6379
-    }
+// #region agent log
+fetch('http://127.0.0.1:7508/ingest/80ad45cf-6c19-41c9-9065-208fa26788c2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4bd2e9'},body:JSON.stringify({sessionId:'4bd2e9',location:'producer.js:module-load',message:'producer module loading',data:{argv:process.argv,cwd:process.cwd()},timestamp:Date.now(),hypothesisId:'B',runId:'post-fix-v2'})}).catch(()=>{});
+// #endregion
+
+export const notificationQueue = new Queue('notification', {
+    connection,
 })
 
-//test code
-async function main() {
-    await queue.add('sendIpoAlert', {
-        user_id: 1,
-        ipo_name: 'all',               // or a specific IPO name
-        filter: {
-            gmp: { op: '>=', value: 0 },
-            subscription: { op: '<=', value: 999999 }
-        },
-        phone: '+10000000000',
-        email: 'test@example.com',
-        alert_time: new Date().toISOString()
-    }, {
-        removeOnComplete: true
-    });
-
-    console.log('Test job added');
-    await queue.close();
-}
-main().catch(err => { console.error(err); process.exit(1); });
+// #region agent log
+fetch('http://127.0.0.1:7508/ingest/80ad45cf-6c19-41c9-9065-208fa26788c2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4bd2e9'},body:JSON.stringify({sessionId:'4bd2e9',location:'producer.js:module-ready',message:'producer queue created, no test main on import',data:{queueName:'notification'},timestamp:Date.now(),hypothesisId:'B',runId:'post-fix'})}).catch(()=>{});
+// #endregion

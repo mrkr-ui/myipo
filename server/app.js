@@ -1,8 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import userRoutes from './routes/userRoutes.js';
-import { loadSupabaseJWKS } from './middleware/supabaseJWKS.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -16,9 +20,12 @@ app.use(express.json()); // built-in middleware for parsing JSON request bodies
 
 app.use(cookieParser(process.env.COOKIE_SECRET)); // cookie parser middleware for secure cookie handling
 
-await loadSupabaseJWKS(); // Load JWKS at server startup
-
 // root route
+app.get('/ipoData', (_req, res) => {
+  const db = JSON.parse(readFileSync(join(__dirname, 'sampleData/db.json'), 'utf8'));
+  res.json(db.ipoData);
+});
+
 app.use('/api/user', userRoutes);
 
 //error handling middleware
