@@ -28,14 +28,6 @@ export const notificationWorker = new Worker('notification', workerJobHandler, {
 
 console.log('Notification worker started, waiting for Redis and jobs...');
 
-// #region agent log
-notificationWorker.on('ready', () => {
-    fetch('http://127.0.0.1:7508/ingest/80ad45cf-6c19-41c9-9065-208fa26788c2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4bd2e9'},body:JSON.stringify({sessionId:'4bd2e9',location:'worker.js:ready',message:'bullmq worker ready',data:{queueName:'notification'},timestamp:Date.now(),hypothesisId:'E'})}).catch(()=>{});
-});
-notificationWorker.on('error', (err) => {
-    fetch('http://127.0.0.1:7508/ingest/80ad45cf-6c19-41c9-9065-208fa26788c2',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4bd2e9'},body:JSON.stringify({sessionId:'4bd2e9',location:'worker.js:error',message:'bullmq worker error',data:{error:err.message},timestamp:Date.now(),hypothesisId:'E'})}).catch(()=>{});
-});
-// #endregion
 
 
 async function workerJobHandler(job) {
